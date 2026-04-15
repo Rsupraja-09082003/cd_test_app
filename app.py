@@ -1,14 +1,29 @@
-FROM python:3.10-slim
+from flask import Flask, request, jsonify
+import pickle
+import numpy as np
 
-WORKDIR /app
+app = Flask(__name__)
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# load model (you will add this later)
+# model = pickle.load(open("model.pkl", "rb"))
 
-COPY . .
+@app.route("/")
+def home():
+    return "ML Model is running!"
 
-EXPOSE 8000
+@app.route("/predict", methods=["POST"])
+def predict():
+    data = request.json["data"]
 
-CMD ["python", "app.py"]
+    # convert input
+    input_array = np.array(data).reshape(1, -1)
 
+    # prediction (dummy for now)
+    prediction = sum(data)  # replace with model.predict
 
+    return jsonify({
+        "prediction": prediction
+    })
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
