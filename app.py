@@ -13,7 +13,7 @@ def home():
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    data = request.json["data"]
+    data = request.json["data"] 
 
     # convert input
     input_array = np.array(data).reshape(1, -1)
