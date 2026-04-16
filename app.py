@@ -4,7 +4,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-# load model (you will add this later)
+# load model (you will add this later) 
 # model = pickle.load(open("model.pkl", "rb"))
 
 @app.route("/")
