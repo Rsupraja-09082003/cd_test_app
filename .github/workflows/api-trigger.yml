@@ -1,0 +1,19 @@
+name: Trigger SuperagentX Workflow
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  trigger-api:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call SuperagentX API
+        run: |
+          curl -X POST "https://api.test.ai/api/project/orchestrator/execute/123456790" \
+          -H "accept: */*" \
+          -H "api-token: ${{ secrets.API_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query":"PR merged trigger"}'
