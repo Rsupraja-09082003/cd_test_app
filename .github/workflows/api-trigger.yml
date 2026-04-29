@@ -12,8 +12,9 @@ jobs:
     steps:
       - name: Call SuperagentX API
         run: |
-          curl -X POST "https://api.test.ai/api/project/orchestrator/execute/123456790" \
-          -H "accept: */*" \
+          curl -X POST \
+          'https://devapi.superagentx.ai/sagentx/api/project/orchestrator/execute/69f1934eb3043d68ac91e641' \
+          -H 'accept: */*' \
           -H "api-token: ${{ secrets.API_TOKEN }}" \
           -H "Content-Type: application/json" \
           -d '{"query":"PR merged trigger"}'
