@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "ML Model is running lets goooo  yayy y    yesss yayyyy lets gooooo   yesssss yayyy!" 
+    return "ML Model is running lets goooo  yayy y    yesss yayyyy lets gooooo   yesssss yayyy yess!" 
 
 @app.route("/predict", methods=["POST"])
 def predict():
